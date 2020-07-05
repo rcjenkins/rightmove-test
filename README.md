@@ -1,6 +1,19 @@
 FED Test
 ========
 
+## Actions undertaken
+
+### Because this was a interactive test of 60 minutes and I hate leaving stuff unfinished
+
+*Took about 2 hours to complete*
+
+Use Redux for state management
+
+Added all filters and sorting to layout
+Added unselected option to dropdowns
+
+Fix server sorting (was returning true/false should be -1/1)
+
 ## Instructions
 
 Install required dependencies by running `npm ci`. Then start the project by running `npm start`.
