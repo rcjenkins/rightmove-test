@@ -3,7 +3,9 @@ FED Test
 
 ## Actions undertaken
 
-### Because this was a interactive test of 60 minutes and I hate leaving stuff un finished
+### Because this was a interactive test of 60 minutes and I hate leaving stuff unfinished
+
+*Took about 2 hours to complete*
 
 Use Redux for state management
 
