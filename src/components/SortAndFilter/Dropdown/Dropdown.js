@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Dropdown.scss';
 
-const Dropdown = ({options, onChange, label}) => {
+const Dropdown = ({options, onChange, label, ddType}) => {
     return (
         <div className="Dropdown">
             <label>
                 {label}
-                <select onChange={(e) => onChange(e.target.value)}>
+                <select onChange={(e) => onChange(e.target.value, ddType)}>
                 <option value="">Please Select</option>
                     {
                         options.map((option) => {

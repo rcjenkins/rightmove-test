@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import './MultiSelect.scss';
 
-const MultiSelect = ({options, onChange, label}) => {
+const MultiSelect = ({options, onChange, label, msType}) => {
 
     const didMount = useRef(false);
 
@@ -10,11 +10,11 @@ const MultiSelect = ({options, onChange, label}) => {
 
     useEffect(() => {
         if (didMount.current) {
-            onChange(Object.keys(selectedOptions).filter((key) => selectedOptions[key] === true));
+            onChange(Object.keys(selectedOptions).filter((key) => selectedOptions[key] === true), msType);
         } else {
             didMount.current = true;
         }
-    }, [selectedOptions, onChange]);
+    }, [selectedOptions, msType, onChange]);
 
     const handleOnChange = (e) => {
         setSelectedOptions({

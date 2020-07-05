@@ -10,53 +10,19 @@ import { updateFilters, fetchProperties} from '../../store/properties/properties
 const SortAndFilter = () => {
     const dispatch = useDispatch()
 
-    const onChangeMinPrice = (value) => {
+    const onChangeDropdown = (value, ddType) => {
         
-        dispatch(updateFilters({key:"minPrice", value:value}))
+        dispatch(updateFilters({key:ddType, value:value}))
         dispatch(fetchProperties())
     }
 
-    const onChangeMaxPrice = (value) => {
-        
-        dispatch(updateFilters({key:"maxPrice", value:value}))
+
+    const onChangeMultiSelect= (value, msType) => {
+        const filter = {key:msType, value:""}
+        if(value.length !== 0) { filter.value = value }
+        dispatch(updateFilters(filter))
         dispatch(fetchProperties())
     }
-
-    const onChangeMinBedrooms= (value) => {
-        
-        dispatch(updateFilters({key:"minBeds", value:value}))
-        dispatch(fetchProperties())
-    }
-
-    const onChangeMaxBedrooms= (value) => {
-        
-        dispatch(updateFilters({key:"maxBeds", value:value}))
-        dispatch(fetchProperties())
-    }
-
-    const onChangePropertyTypes= (value) => {
-        
-        if(value.length === 0) {
-            dispatch(updateFilters({key:"propertyTypes", value:""}))
-        }
-        else {
-            dispatch(updateFilters({key:"propertyTypes", value:value}))
-        }
-        dispatch(fetchProperties())
-    }
-
-    const onChangeSortBy= (value) => {
-        
-        dispatch(updateFilters({key:"sortBy", value:value}))
-        dispatch(fetchProperties())
-    }
-
-    const onChangeOrderBy= (value) => {
-        
-        dispatch(updateFilters({key:"orderBy", value:value}))
-        dispatch(fetchProperties())
-    }
-
 
 
     return (
@@ -64,13 +30,13 @@ const SortAndFilter = () => {
             {/*
                 TODO: add filters here...
             */}
-            <MultiSelect label="Property Type" options={propertyTypes} onChange={onChangePropertyTypes} />
-            <Dropdown label="Min. Bedrooms" options={bedOptions} onChange={onChangeMinBedrooms} />
-            <Dropdown label="Max. Bedrooms" options={bedOptions} onChange={onChangeMaxBedrooms} />
-            <Dropdown label="Min. Price" options={priceOptions} onChange={onChangeMinPrice} />
-            <Dropdown label="Max. Price" options={priceOptions} onChange={onChangeMaxPrice} />
-            <Dropdown label="Sort by" options={sortOptions} onChange={onChangeSortBy} />
-            <Dropdown label="Order by" options={orderOptions} onChange={onChangeOrderBy} />
+            <MultiSelect label="Property Type" options={propertyTypes} msType="propertyTypes" onChange={onChangeMultiSelect} />
+            <Dropdown label="Min. Bedrooms" options={bedOptions} ddType="minBeds" onChange={onChangeDropdown} />
+            <Dropdown label="Max. Bedrooms" options={bedOptions} ddType="maxBeds" onChange={onChangeDropdown} />
+            <Dropdown label="Min. Price" options={priceOptions} ddType="minPrice" onChange={onChangeDropdown} />
+            <Dropdown label="Max. Price" options={priceOptions} ddType="maxPrice" onChange={onChangeDropdown} />
+            <Dropdown label="Sort by" options={sortOptions} ddType="sortBy" onChange={onChangeDropdown} />
+            <Dropdown label="Order by" options={orderOptions} ddType="orderBy" onChange={onChangeDropdown} />
         </div>
     );
 };
